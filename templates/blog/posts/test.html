@@ -1,1 +1,9 @@
-this is test
+{% extends 'blog/posts/base.html' %}
+
+{% block main_content %}
+    {% include 'blog/include/content.html' %}
+{% endblock main_content %}
+
+{% block side_content %}
+    {% include 'blog/include/side.html' %}
+{% endblock side_content %}
