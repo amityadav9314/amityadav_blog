@@ -1,7 +1,8 @@
 django
 #uwsgi
-mysql-python
+#mysql-python
 django-storages
 emtex_common_utils
 tagging
 django-extensions
+django-mptt

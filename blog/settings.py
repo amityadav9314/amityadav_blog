@@ -205,7 +205,7 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
 }
 
 
-if os.getenv("MDOE") == "PROD":
+if os.getenv("MODE") == "PROD":
     from prod_settings import *
 else:
     from dev_settings import *
