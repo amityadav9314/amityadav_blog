@@ -6,3 +6,5 @@ emtex_common_utils
 tagging
 django-extensions
 django-mptt
+ipython==5.0
+boto==2.47.0
