@@ -42,6 +42,13 @@ class Category(MPTTModel):
                 [self.slug])
         return self.slug
 
+    def get_absolute_url(self):
+        """
+        Builds and returns the category's URL
+        based on his tree path.
+        """
+        return "%s" % self.tree_path
+
     def __str__(self):
         return self.title
 
