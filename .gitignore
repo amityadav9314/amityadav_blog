@@ -105,3 +105,8 @@ ENV/
 
 # db
 db.sqlite3
+
+# npm
+node_modules
+node_modules/*
+package-lock.json
