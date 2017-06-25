@@ -22,6 +22,8 @@ class Posts(BaseModel):
         unique_for_date='publication_date',
         help_text="Used to build the entry's URL.")
 
+    content = models.TextField()
+
     status = models.CharField(
         max_length=10,
         db_index=True,
