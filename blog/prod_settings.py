@@ -26,12 +26,12 @@ DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv("db_name"),
-        'USER': os.getenv("db_user"),
-        'PASSWORD': os.getenv("db_password"),
-        'HOST': os.getenv("db_host"),
-        'PORT': os.getenv("db_port"),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("amityadav_blog_db_name"),
+        'USER': os.getenv("amityadav_blog_db_user"),
+        'PASSWORD': os.getenv("amityadav_blog_db_password"),
+        'HOST': os.getenv("amityadav_blog_db_host"),
+        'PORT': os.getenv("amityadav_blog_db_port"),
     }
 }
 
