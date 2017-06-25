@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from emtex_common_utils.models import BaseModel
 
 from mptt.managers import TreeManager
 from mptt.models import MPTTModel
 from mptt.models import TreeForeignKey
 
 
-class Category(MPTTModel):
+class Category(MPTTModel, BaseModel):
     """
     Simple model for categorizing entries.
     """
