@@ -2,3 +2,5 @@ django
 #uwsgi
 mysql-python
 django-storages
+emtex_common_utils
+tagging
