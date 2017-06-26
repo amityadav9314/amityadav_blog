@@ -56,6 +56,21 @@ class Posts(BaseModel):
     objects = models.Manager()
     published = PostPublishedManager()
 
+    @models.permalink
+    def get_absolute_url(self):
+        """
+        Builds and returns the entry's URL based on
+        the slug and the creation date.
+        """
+        publication_date = self.publication_date
+        if timezone.is_aware(publication_date):
+            publication_date = timezone.localtime(publication_date)
+        return ('show_one_post', (), {
+            'year': publication_date.strftime('%Y'),
+            'month': publication_date.strftime('%m'),
+            'day': publication_date.strftime('%d'),
+            'slug': self.slug})
+
     @property
     def is_published(self):
         """

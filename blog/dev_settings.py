@@ -38,3 +38,5 @@ DATABASES = {
         'PORT': '5432',  # Set to empty string for default.
     }
 }
+
+LIST_POSTS_LIMIT = 2

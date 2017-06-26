@@ -2,6 +2,9 @@ import os
 DEBUG = False
 AWS_HOST_NAME = 's3.ap-south-1.amazonaws.com'
 AWS_STORAGE_BUCKET_NAME = 'amityadav-blog-prod'
+
+LIST_POSTS_LIMIT = 10
+
 AWS_ACCESS_KEY_ID = os.getenv("AWSAccessKeyId")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWSSecretKey")
 

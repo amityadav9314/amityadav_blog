@@ -1,0 +1,15 @@
+{% extends 'blog/posts/base.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block main_content %}
+    {% for post_dto in posts_dto %}
+        {% include 'blog/include/content.html' %}
+    {% endfor %}
+{% endblock main_content %}
+
+{% block side_content %}
+    {% include 'blog/include/side.html' %}
+{% endblock side_content %}

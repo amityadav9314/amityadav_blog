@@ -8,7 +8,11 @@
     <meta name="author" content="">
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
 
-    <title>Blog Template for Bootstrap</title>
+    <title>
+        {% block title %}
+        {% endblock title %}
+        | Amit Yadav Blog
+    </title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -41,15 +45,24 @@
 
 <div class="container">
     <div class="row">
-        {% block main_content %}
-        {% endblock main_content %}
-        {% block side_content %}
-        {% endblock side_content %}
+        <div class="col-lg-8 col-md-8">
+            {% block main_content %}
+            {% endblock main_content %}
+        </div>
+        <div class="col-lg-3 col-md-3">
+            {% block side_content %}
+            {% endblock side_content %}
+        </div>
     </div><!-- /.row -->
+    <br>
+    <nav class="blog-pagination">
+        <a class="btn btn-outline-primary" href="#">Older</a>
+        <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+    </nav>
 </div><!-- /.container -->
 
 <footer class="blog-footer">
-    <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+    <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="http://amityadav.in">Amit Yadav</a>.</p>
     <p>
         <a href="#">Back to top</a>
     </p>
