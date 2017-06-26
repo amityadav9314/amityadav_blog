@@ -10,6 +10,9 @@ class PostDTO(object):
             if not key.startswith("__") or not key.startswith("_"):
                 setattr(self, key, value)
 
+        # Set url
+        setattr(self, 'url', post_obj.get_absolute_url())
+
 
 class PostsDTO(object):
     pass
