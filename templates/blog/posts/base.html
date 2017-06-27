@@ -19,6 +19,13 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+
+    <style>
+        html, body {
+        }
+    </style>
+    {% block extra_css %}
+    {% endblock extra_css %}
 </head>
 
 <body>
@@ -45,7 +52,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-8">
+        <div class="col-lg-9 col-md-9">
             {% block main_content %}
             {% endblock main_content %}
         </div>
@@ -78,5 +85,7 @@
 <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+{% block extra_js %}
+{% endblock extra_js %}
 </body>
 </html>

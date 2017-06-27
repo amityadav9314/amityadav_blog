@@ -1,4 +1,5 @@
 
+{% load static from staticfiles %}
 <div class="blog-main">
 
     <div class="blog-post">
@@ -24,6 +25,7 @@
             tagged in {{ post_dto.tags }}
 
         </p>
-        {{ post_dto.content }}
+        <link rel="stylesheet" href="{% static 'css/jupyter-notebook/jupyter.css' %}">
+        {{ post_dto.content|safe }}
     </div><!-- /.blog-post -->
 </div><!-- /.blog-main -->

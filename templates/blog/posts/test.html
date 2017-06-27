@@ -1,9 +1,154 @@
 {% extends 'blog/posts/base.html' %}
+{% load static from staticfiles %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/jupyter-notebook/jupyter.css' %}">
+<!--<link rel="stylesheet" href="{% static 'css/jupyter-notebook/custom.css' %}">-->
+{% endblock extra_css %}
 
 {% block main_content %}
-    {% include 'blog/include/content.html' %}
+<div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="" id="">
+
+        <div class="cell border-box-sizing text_cell rendered">
+            <div class="prompt input_prompt">
+            </div>
+            <div class="inner_cell">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h1 id="Magic-functions">Magic functions<a class="anchor-link" href="#Magic-functions">&#182;</a></h1>
+                </div>
+            </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+            <div class="prompt input_prompt">
+            </div>
+            <div class="inner_cell">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <p>Magic functions/methods starts with double underscore and ends with double underscore.</p>
+                    <p>Some examples:</p>
+                    <ul>
+                        <li><code>__init__()</code></li>
+                        <li><code>__new__()</code></li>
+                        <li><code>__len__()</code></li>
+                    </ul>
+                    <p>and many more.</p>
+                    <p>The whole list can be found <a href="https://docs.python.org/3/reference/datamodel.html#specialnames">here</a>.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="cell border-box-sizing text_cell rendered">
+            <div class="prompt input_prompt">
+            </div>
+            <div class="inner_cell">
+                <div class="text_cell_render border-box-sizing rendered_html">
+                    <h2 id="Difference-between-__init__()---and-__new__()">Difference between <code>__init__()</code> and <code>__new__()</code><a class="anchor-link" href="#Difference-between-__init__()---and-__new__()">&#182;</a></h2>
+                    <p>Use <code>__new__</code> when you need to control the creation of a new instance. Use <code>__init__</code> when you need to control initialization of a new instance.</p>
+                    <p><code>__new__</code> is the first step of instance creation. It's called first, and is responsible for returning a new instance of your class. In contrast, <code>__init__</code> doesn't return anything; it's only responsible for initializing the instance after it's been created.</p>
+                    <p>In general, you shouldn't need to override <code>__new__</code> unless you're subclassing an immutable type like str, int, unicode or tuple.</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="cell border-box-sizing code_cell rendered">
+            <div class="input">
+                <div class="prompt input_prompt">In&nbsp;[10]:</div>
+                <div class="inner_cell">
+                    <div class="input_area">
+                        <div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span> <span class="s2">&quot;__init__ is called&quot;</span>
+
+<span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>
+</pre>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="output_wrapper">
+                <div class="output">
+
+
+                    <div class="output_area">
+                        <div class="prompt"></div>
+
+                        <div class="output_subarea output_stream output_stdout output_text">
+<pre>__init__ is called
+</pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="cell border-box-sizing code_cell rendered">
+            <div class="input">
+                <div class="prompt input_prompt">In&nbsp;[14]:</div>
+                <div class="inner_cell">
+                    <div class="input_area">
+                        <div class=" highlight hl-ipython2"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">att</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If your class defines a __getattr__() method, </span>
+<span class="sd">        Python will call it only after looking for the attribute in </span>
+<span class="sd">        all the normal places. If an instance x defines an attribute color, </span>
+<span class="sd">        x.color will not call x.__getattr__(&#39;color&#39;); </span>
+<span class="sd">        it will simply return the already-defined value of x.color.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">print</span> <span class="s1">&#39;__getattr__ is called&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">att</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If your class defines a __getattribute__() method, </span>
+<span class="sd">        Python will call it on every reference to any attribute or method name </span>
+<span class="sd">        (except special method names, since that would cause an unpleasant infinite loop).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">print</span> <span class="s1">&#39;__getattribute__ is called&#39;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">att</span><span class="p">)</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;machine&#39;</span>
+<span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">time</span>
+<span class="k">print</span> <span class="n">a</span><span class="o">.</span><span class="n">wow</span>
+</pre>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="output_wrapper">
+                <div class="output">
+
+
+                    <div class="output_area">
+                        <div class="prompt"></div>
+
+                        <div class="output_subarea output_stream output_stdout output_text">
+<pre>__getattribute__ is called
+machine
+__getattribute__ is called
+__getattr__ is called
+None
+</pre>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock main_content %}
 
 {% block side_content %}
-    {% include 'blog/include/side.html' %}
+{% include 'blog/include/side.html' %}
 {% endblock side_content %}
+
+{% block extra_js %}
+{% endblock extra_js %}
