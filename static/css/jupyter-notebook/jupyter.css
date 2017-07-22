@@ -3192,12 +3192,12 @@ ul.typeahead-list > li > a {
 .highlight .c { color: #94c273; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #cc89e0; font-weight: bold } /* Keyword */
-.highlight .o { color: #666666 } /* Operator */
+.highlight .o { color: inherit } /* Operator */
 .highlight .ch { color: #94c273; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #94c273; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #94c273; } /* Comment.Preproc */
 .highlight .cpf { color: #94c273; font-style: italic } /* Comment.PreprocFile */
-.highlight .c1 { color: #94c273; font-style: italic } /* Comment.Single */
+.highlight .c1 { color: #7b7c7c; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #94c273; font-style: italic } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
 .highlight .ge { font-style: italic } /* Generic.Emph */
@@ -3234,7 +3234,7 @@ ul.typeahead-list > li > a {
 .highlight .mb { color: #666666 } /* Literal.Number.Bin */
 .highlight .mf { color: #666666 } /* Literal.Number.Float */
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
-.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mi { color: inherit } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
 .highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
