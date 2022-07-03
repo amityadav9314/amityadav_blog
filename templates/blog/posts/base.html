@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static from staticfiles %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -45,7 +45,7 @@
 
 <div class="blog-header">
     <div class="container">
-        <h1 class="blog-title">The Amit Yadav Blog</h1>
+        <h1 class="blog-title"><a href="{% url 'show_list_of_posts' %}">The Amit Yadav Blog</a></h1>
         <p class="lead blog-description">Don't let the byte code bite you.</p>
     </div>
 </div>

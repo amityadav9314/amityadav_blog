@@ -1,8 +1,9 @@
-from django.utils import timezone
-from tagging.fields import TagField
-
 from django.db import models
+from django.urls import reverse
+
+from django.utils import timezone
 from emtex_common_utils.models import BaseModel
+from tagging.fields import TagField
 
 from posts.managers import PostPublishedManager
 
@@ -56,7 +57,6 @@ class Posts(BaseModel):
     objects = models.Manager()
     published = PostPublishedManager()
 
-    @models.permalink
     def get_absolute_url(self):
         """
         Builds and returns the entry's URL based on
@@ -65,7 +65,7 @@ class Posts(BaseModel):
         publication_date = self.publication_date
         if timezone.is_aware(publication_date):
             publication_date = timezone.localtime(publication_date)
-        return ('show_one_post', (), {
+        return reverse('show_one_post', kwargs={
             'year': publication_date.strftime('%Y'),
             'month': publication_date.strftime('%m'),
             'day': publication_date.strftime('%d'),
@@ -88,4 +88,3 @@ class Posts(BaseModel):
         permissions = (('can_view_all', 'Can view all entries'),
                        ('can_change_status', 'Can change status'),
                        ('can_change_author', 'Can change author(s)'),)
-

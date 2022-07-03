@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from django.core.urlresolvers import NoReverseMatch
-from django.core.urlresolvers import reverse
+from django.urls import reverse, NoReverseMatch
 from django.utils.html import conditional_escape
 from django.utils.html import format_html_join
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from .models import Posts
 

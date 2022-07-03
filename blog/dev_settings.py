@@ -22,8 +22,8 @@ STATIC_URL = "/static/"
 # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
 # you run `collectstatic`).
 MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = "http://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-# MEDIA_URL = "/media/"
+# MEDIA_URL = "http://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+MEDIA_URL = "/media/"
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 
@@ -33,9 +33,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'amityadav_blog',  # Or path to database file if using sqlite3.
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'amit8780',
         'HOST': 'localhost',
-        'PORT': '5432',  # Set to empty string for default.
+        'PORT': '3306',  # Set to empty string for default.
     }
 }
 
