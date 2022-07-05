@@ -22,7 +22,9 @@
                     <a href="#">{{ category.title }}</a>
                 {% endif %}
             {% endfor %}
-            tagged in {{ post_dto.tags }}
+            {% if post_dto.tags %}
+                tagged in {{ post_dto.tags }}
+            {% endif %}
 
         </p>
         <link rel="stylesheet" href="{% static 'css/jupyter-notebook/jupyter.css' %}">

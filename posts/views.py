@@ -80,7 +80,7 @@ class ListPostsView(View):
 
         posts_dto = []
         for post_obj in posts_db_obj:
-            posts_dto.append(PostDTO(post_obj))
+            posts_dto.append(PostDTO(post_obj, exclude=['content']))
         return render(
             request,
             'blog/posts/show_list_of_posts.html',

@@ -9,3 +9,5 @@ django-extensions
 django-mptt
 ipython==5.0
 boto==2.47.0
+apscheduler
+requests

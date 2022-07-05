@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'posts',
+    # 'posts.apps.PostsConfig',
     'categories',
     'tagging',
     'mptt',
@@ -252,4 +253,7 @@ DATABASES = {
     }
 }
 
-LIST_POSTS_LIMIT = 2
+LIST_POSTS_LIMIT = 20
+TIME_ZONE = 'Asia/Kolkata'
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+TELEGRAM_URL = 'https://api.telegram.org/bot{token}/sendMessage?text={message}&parse_mode=markdown&chat_id={user}'

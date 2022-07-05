@@ -78,6 +78,9 @@ class Posts(BaseModel):
         """
         return self.status == self.PUBLISHED
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         ordering = ['-publication_date']
         get_latest_by = 'publication_date'

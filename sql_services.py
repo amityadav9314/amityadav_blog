@@ -68,7 +68,7 @@ def get_many_db_object(module, model_name, _select_related=None, _prefetch_relat
 
     Examples
     --------
-    >>> from sql_services import get_one_db_object
+    >>> from sql_services import get_many_db_object
     >>> get_one_db_object('posts.models', 'Posts', **{'id': 1})
     <QuerySet [<Posts: Posts object>]>
     OR
