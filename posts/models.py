@@ -12,9 +12,9 @@ class Posts(BaseModel):
     DRAFT = "draft"
     HIDDEN = "hidden"
     PUBLISHED = "published"
-    STATUS_CHOICES = ((DRAFT, 'draft'),
-                      (HIDDEN, 'hidden'),
-                      (PUBLISHED, 'published'))
+    STATUS_CHOICES = ((DRAFT, DRAFT),
+                      (HIDDEN, HIDDEN),
+                      (PUBLISHED, PUBLISHED))
 
     title = models.CharField(max_length=255)
 
@@ -76,7 +76,7 @@ class Posts(BaseModel):
         """
         Checks if an entry is visible and published.
         """
-        return self.status == self.PUBLISHED
+        return self.is_active and self.status == self.PUBLISHED
 
     def __str__(self):
         return self.title

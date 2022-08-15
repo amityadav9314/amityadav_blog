@@ -14,6 +14,22 @@
         | Amit Yadav Blog
     </title>
 
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
 
@@ -30,23 +46,58 @@
 
 <body>
 
-<div class="blog-masthead">
-    <div class="container">
-        <nav class="nav blog-nav">
-            <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="#">What I Did</a>
-            <a class="nav-link" href="#">What I do</a>
-            <a class="nav-link" href="#">What I wanna do</a>
-            <a class="nav-link" href="#">About</a>
-            <a class="nav-link" href="#">And Everything Else</a>
-        </nav>
-    </div>
-</div>
+{#<div class="blog-masthead">#}
+{#    <div class="container">#}
+{#        <nav class="nav blog-nav">#}
+{#            <a class="nav-link active" href="/">Home</a>#}
+{#            <a class="nav-link" href="#">What I Did</a>#}
+{#            <a class="nav-link" href="#">What I do</a>#}
+{#            <a class="nav-link" href="#">What I wanna do</a>#}
+{#            <a class="nav-link" href="#">About</a>#}
+{#            <a class="nav-link" href="#">And Everything Else</a>#}
+{#        </nav>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<div class="blog-header">#}
+{#    <div class="container">#}
+{#        <h1 class="blog-title"><a href="{% url 'show_list_of_posts' %}">Don't let the byte code bite you</a></h1>#}
+{#        <p class="lead blog-description">The Yadav's</p>#}
+{#    </div>#}
+{#</div>#}
 
-<div class="blog-header">
-    <div class="container">
-        <h1 class="blog-title"><a href="{% url 'show_list_of_posts' %}">Don't let the byte code bite you</a></h1>
-        <p class="lead blog-description">The Yadav's</p>
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-2 pt-1">
+                <a class="link-secondary" href="#">Subscribe</a>
+            </div>
+            <div class="col-6 text-center">
+                <a class="blog-header-logo text-dark" href="/">Don't let the byte code bite you</a>
+            </div>
+            <div class="col-2 d-flex justify-content-end align-items-center">
+                <a class="link-secondary" href="#" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+                         viewBox="0 0 24 24"><title>Search</title>
+                        <circle cx="10.5" cy="10.5" r="7.5"/>
+                        <path d="M21 21l-5.2-5.2"/>
+                    </svg>
+                </a>
+                <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            <a class="p-2 link-secondary" href="/">Home</a>
+            <a class="p-2 link-secondary" href="#">What I Did</a>
+            <a class="p-2 link-secondary" href="#">What I Do</a>
+            <a class="p-2 link-secondary" href="#">What I Wanna Do</a>
+            <a class="p-2 link-secondary" href="#">About</a>
+            <a class="p-2 link-secondary" href="#">And Everything Else</a>
+        </nav>
     </div>
 </div>
 
@@ -69,7 +120,8 @@
 </div><!-- /.container -->
 
 <footer class="blog-footer">
-    <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="http://amityadav.in">Amit Yadav</a>.</p>
+    <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="http://amityadav.in">Amit
+        Yadav</a>.</p>
     <p>
         <a href="#">Back to top</a>
     </p>

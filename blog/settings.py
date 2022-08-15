@@ -39,15 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'posts',
+    'revision',
     # 'posts.apps.PostsConfig',
     'categories',
     'tagging',
     'mptt',
     'storages',
     'django_extensions',
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -215,6 +219,8 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
 
 import os
 DEBUG = True
+SITE_HOST = 'http://127.0.0.1'
+SITE_PORT = '8000'
 AWS_HOST_NAME = 's3.ap-south-1.amazonaws.com'
 AWS_STORAGE_BUCKET_NAME = 'amityadav-blog-dev'
 AWS_ACCESS_KEY_ID = os.getenv("AWSAccessKeyId")
@@ -255,5 +261,13 @@ DATABASES = {
 
 LIST_POSTS_LIMIT = 20
 TIME_ZONE = 'Asia/Kolkata'
+USE_TZ = False
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_URL = 'https://api.telegram.org/bot{token}/sendMessage?text={message}&parse_mode=markdown&chat_id={user}'
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20
+}
+
+CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+CORS_ALLOW_CREDENTIALS = True
