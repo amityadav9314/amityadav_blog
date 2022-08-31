@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from django.utils import timezone
 from emtex_common_utils.models import BaseModel
+
 from tagging.fields import TagField
 
 from posts.managers import PostPublishedManager
