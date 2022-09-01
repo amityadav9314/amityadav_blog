@@ -45,6 +45,4 @@ class RevisePostViewSet(ListCreateAPIView):
             print(traceback.format_exc())
             my_dict['status'] = 'failed'
             my_dict['error'] = str(e)
-            return Response(my_dict, status=status.HTTP_400_BAD_REQUEST)
-
-
+            return Response(my_dict, status=status.HTTP_400_BAD_REQUEST, content_type='application/json')
