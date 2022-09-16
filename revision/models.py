@@ -18,3 +18,14 @@ class Revise(TimeStampedModel):
     seventh_revision_date = models.DateField(default=timezone.now() + timedelta(days=7))
     fifteenth_revision_date = models.DateField(default=timezone.now() + timedelta(days=14))
     last_revision_date = models.DateField(default=timezone.now() + timedelta(days=30))
+
+    def __str__(self):
+        return self.post.title
+
+    class Meta:
+        ordering = ['-modified']
+        get_latest_by = 'modified'
+        verbose_name = 'Revision'
+        verbose_name_plural = 'Revisions'
+        index_together = [['post', 'user'],]
+
