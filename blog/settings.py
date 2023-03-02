@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'posts',
     'revision',
+    'todo',
     # 'posts.apps.PostsConfig',
     'categories',
     'tagging',

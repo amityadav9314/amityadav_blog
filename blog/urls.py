@@ -13,6 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', include('posts.urls')),
     path(r'', include('revision.urls')),
+    path(r'', include('todo.urls')),
     re_path('^rest/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
