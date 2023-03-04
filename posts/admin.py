@@ -38,6 +38,7 @@ class PostAdmin(admin.ModelAdmin):
     actions = ['make_published', 'close_comments', ]
     actions_on_top = True
     actions_on_bottom = True
+    list_display = ['title', 'get_authors', 'publication_date', 'status']
 
     def __init__(self, model, admin_site):
         self.form.admin_site = admin_site

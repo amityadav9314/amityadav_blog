@@ -12,8 +12,9 @@ class PostReviseSerializer(serializers.Serializer):
         raise NotImplementedError
 
     def create(self, validated_data):
+        email = self.context.get('email')
         post_id = validated_data.get("post_id")
-        user = User.objects.get(id=1)
+        user = User.objects.get(email=email)
         post = Posts.objects.get(id=post_id)
         r = Revise(post=post, user=user)
         r.save()
@@ -27,8 +28,9 @@ class PostDeleteSerializer(serializers.Serializer):
         raise NotImplementedError
 
     def create(self, validated_data):
+        email = self.context.get('email')
         post_id = validated_data.get("post_id")
-        user = User.objects.get(id=1)
+        user = User.objects.get(email=email)
         post = Posts.objects.get(id=post_id)
         Revise.objects.filter(post=post, user=user).delete()
         return post

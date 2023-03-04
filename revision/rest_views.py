@@ -1,6 +1,7 @@
 import traceback
 from datetime import datetime
 
+from django.contrib.auth.models import User
 from django.db.models import Q
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView
@@ -24,20 +25,27 @@ class RevisePostViewSet(ListCreateAPIView):
             return PostDeleteSerializer
 
     def get_queryset(self):
-        today = datetime.today().strftime("%Y-%m-%d")
-        post_ids = Revise.objects.filter(
-            Q(first_revision_date=today)
-            | Q(second_revision_date=today)
-            | Q(third_revision_date=today)
-            | Q(seventh_revision_date=today)
-            | Q(fifteenth_revision_date=today)
-            | Q(last_revision_date=today)
-        ).values_list('post_id', flat=True)
-        posts = Posts.objects.filter(id__in=post_ids)
-        return posts
+        email = self.request.query_params.get('email', None)
+        if not email:
+            return Posts.objects.none()
+        try:
+            user = User.objects.get(email=email)
+            today = datetime.today().strftime("%Y-%m-%d")
+            post_ids = Revise.objects.filter(
+                Q(first_revision_date=today)
+                | Q(second_revision_date=today)
+                | Q(third_revision_date=today)
+                | Q(seventh_revision_date=today)
+                | Q(fifteenth_revision_date=today)
+                | Q(last_revision_date=today)
+            ).values_list('post_id', flat=True)
+            posts = Posts.objects.filter(id__in=post_ids, authors=user)
+            return posts
+        except User.DoesNotExist:
+            return Posts.objects.nonw()
 
     def post(self, request, *args, **kwargs):
-        serializer = PostReviseSerializer(data=request.data)
+        serializer = PostReviseSerializer(data=request.data, context={'email': self.request.query_params.get('email')})
         my_dict = {'status': 'success'}
         try:
             if serializer.is_valid():
@@ -50,7 +58,7 @@ class RevisePostViewSet(ListCreateAPIView):
             return Response(my_dict, status=status.HTTP_400_BAD_REQUEST, content_type='application/json')
 
     def delete(self, request, *args, **kwargs):
-        serializer = PostDeleteSerializer(data=request.data)
+        serializer = PostDeleteSerializer(data=request.data,  context={'email': self.request.query_params.get('email')})
         my_dict = {'status': 'success'}
         try:
             if serializer.is_valid():

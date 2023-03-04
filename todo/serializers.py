@@ -19,7 +19,8 @@ class TodoAddSerializer(serializers.ModelSerializer):
         raise NotImplementedError
 
     def create(self, validated_data):
-        user = User.objects.get(id=1)
+        email = self.context.get('email')
+        user = User.objects.get(email=email)
         r = Todo(user=user, title=validated_data.get('title'))
         r.save()
         return r
@@ -33,6 +34,5 @@ class TodoDeleteSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         todo_id = validated_data.get("todo_id")
-        user = User.objects.get(id=1)
         todo = Todo.objects.get(id=todo_id).delete()
         return todo

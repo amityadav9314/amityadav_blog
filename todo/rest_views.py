@@ -1,5 +1,6 @@
 import traceback
 
+from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
@@ -20,10 +21,18 @@ class TodoAddViewSet(ListCreateAPIView):
             return TodoDeleteSerializer
 
     def get_queryset(self):
-        return Todo.objects.filter(done=False)
+        queryset = Todo.objects.none()
+        email = self.request.query_params.get('email', None)
+        if email:
+            try:
+                user = User.objects.get(email=email)
+                queryset = Todo.objects.filter(user=user)
+            except User.DoesNotExist:
+                pass
+        return queryset
 
     def post(self, request, *args, **kwargs):
-        serializer = TodoAddSerializer(data=request.data)
+        serializer = TodoAddSerializer(data=request.data, context={'email': self.request.query_params.get('email')})
         my_dict = {'status': 'success'}
         try:
             if serializer.is_valid():

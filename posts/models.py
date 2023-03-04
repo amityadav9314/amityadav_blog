@@ -79,6 +79,9 @@ class Posts(BaseModel):
         """
         return self.is_active and self.status == self.PUBLISHED
 
+    def get_authors(self):
+        return ",".join([u.email for u in self.authors.all()])
+
     def __str__(self):
         return self.title
 
