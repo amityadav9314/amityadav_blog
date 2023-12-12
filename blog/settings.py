@@ -114,7 +114,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
@@ -262,7 +262,6 @@ DATABASES = {
 
 LIST_POSTS_LIMIT = 20
 TIME_ZONE = 'Asia/Kolkata'
-USE_TZ = False
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_URL = 'https://api.telegram.org/bot{token}/sendMessage?text={message}&parse_mode=markdown&chat_id={user}'
 REST_FRAMEWORK = {

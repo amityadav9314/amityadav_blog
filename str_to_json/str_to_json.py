@@ -1,6 +1,6 @@
 import json
-import re
 import os
+import re
 
 
 def get_current_path():
@@ -8,11 +8,8 @@ def get_current_path():
     return current_working_directory
 
 
-read_file_path = get_current_path() + "/str_file.txt"
-write_file_path = get_current_path() + "/json_file.json"
-
-
 def convert_json(str_file):
+    write_file_path = get_current_path() + "/json_file.json"
     json_object = str_file.read()
     json_object = json.loads(json_object)
     if isinstance(json_object, dict):
@@ -30,6 +27,7 @@ def convert_json(str_file):
 
 
 if __name__ == '__main__':
+    read_file_path = get_current_path() + "/str_file.txt"
     with open(read_file_path, 'r') as json_file:
-        json_object = convert_json(json_file)
-        print(json_object)
+        json_obj = convert_json(json_file)
+        print(json_obj)

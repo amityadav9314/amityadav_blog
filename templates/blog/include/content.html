@@ -14,14 +14,16 @@
                     <a href="#">{{ author.username }}</a>
                 {% endif %}
             {% endfor %}
-            in categories
-            {% for category in post_dto.categories %}
-                {% if not forloop.last %}
-                    <a href="#">{{ category.title }}, </a>
-                {% else %}
-                    <a href="#">{{ category.title }}</a>
-                {% endif %}
-            {% endfor %}
+            {% if post.categories %}
+                in categories
+                {% for category in post_dto.categories %}
+                    {% if not forloop.last %}
+                        <a href="#">{{ category.title }}, </a>
+                    {% else %}
+                        <a href="#">{{ category.title }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
             {% if post_dto.tags %}
                 tagged in {{ post_dto.tags }}
             {% endif %}
